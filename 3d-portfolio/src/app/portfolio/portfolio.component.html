@@ -1,0 +1,273 @@
+<div class="wrapper">
+  <div class="cover cover-left"></div>
+  <div class="cover cover-right"></div>
+
+  <div class="book">
+    <!-- profile page -->
+    <div class="book-page page-left">
+      <div class="profile-page">
+        <img [src]="profile?.imgUrl" alt="profile" />
+        <h1>{{ profile?.name | uppercase }}</h1>
+        <h3>{{ profile?.title }}</h3>
+
+        <div class="social-media">
+          <div class="social-media">
+            <a
+              *ngFor="let platform of socialMediaLinks"
+              [href]="platform.link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i [ngClass]="platform.class"></i>
+            </a>
+          </div>
+        </div>
+
+        <p>
+          Hi, I'm {{ profile?.name }} a {{ profile?.title }}.
+          {{ profile?.description }}
+        </p>
+
+        <div class="btn-box">
+          <a href="javascript:void(0)" class="btn">Download CV</a>
+          <a href="javascript:void(0)" class="btn contact-me">Contact Me!</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- page 1 & 2 -->
+    <div class="book-page page-right turn" id="turn-1">
+      <!-- page 1 (work experience) -->
+      <div class="page-front">
+        <h1 class="title">Work Experience</h1>
+
+        <div class="workeduc-box">
+          <div
+            *ngFor="let experience of workExperiences"
+            class="workeduc-content"
+          >
+            <span class="year"
+              ><i class="bx bxs-calendar"></i>{{ experience.period }}</span
+            >
+            <h3>{{ experience.title }}</h3>
+            <p>
+              {{ experience.description }}
+            </p>
+          </div>
+        </div>
+        <span class="number-page">1</span>
+
+        <!-- next button -->
+        <span class="nextprev-btn" data-page="turn-1">
+          <i class="bx bx-chevron-right"></i>
+        </span>
+      </div>
+
+      <!-- page 2 (education) -->
+      <div class="page-back">
+        <h1 class="title">Education</h1>
+
+        <div class="workeduc-box">
+          <div class="workeduc-content">
+            <span class="year"><i class="bx bxs-calendar"></i>2016 - 2018</span>
+            <h3>Education-1</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Molestiae minus eius nemo. Optio cupiditate nostrum commodi
+              repellendus nemo quod in?
+            </p>
+          </div>
+
+          <div class="workeduc-content">
+            <span class="year"><i class="bx bxs-calendar"></i>2018 - 2020</span>
+            <h3>Intermediate - Punjab College</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Molestiae minus eius nemo. Optio cupiditate nostrum commodi
+              repellendus nemo quod in?
+            </p>
+          </div>
+
+          <div class="workeduc-content">
+            <span class="year"><i class="bx bxs-calendar"></i>2020 - 2024</span>
+            <h3>BS Computer Science - University Of Lahore</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Molestiae minus eius nemo. Optio cupiditate nostrum commodi
+              repellendus nemo quod in?
+            </p>
+          </div>
+        </div>
+
+        <span class="number-page">2</span>
+
+        <!-- prev button -->
+        <span class="nextprev-btn back" data-page="turn-1">
+          <i class="bx bx-chevron-left"></i>
+        </span>
+      </div>
+    </div>
+
+    <!-- page 3 & 4 -->
+    <div class="book-page page-right turn" id="turn-2">
+      <!-- page 3 (my services) -->
+      <div class="page-front">
+        <h1 class="title">My Services</h1>
+
+        <div class="services-box">
+          <div class="services-content">
+            <i class="bx bx-code-alt"></i>
+            <h3>Web Development</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
+              quae accusamus aliquam.
+            </p>
+            <a href="javascript:void(0)" class="btn">Read More</a>
+          </div>
+
+          <div class="services-content">
+            <i class="bx bxs-paint"></i>
+            <h3>Creative Design</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
+              quae accusamus aliquam.
+            </p>
+            <a href="javascript:void(0)" class="btn">Read More</a>
+          </div>
+
+          <div class="services-content">
+            <i class="bx bx-bar-chart-alt"></i>
+            <h3>Digital Marketing</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
+              quae accusamus aliquam.
+            </p>
+            <a href="javascript:void(0)" class="btn">Read More</a>
+          </div>
+
+          <div class="services-content">
+            <i class="bx bx-search"></i>
+            <h3>SEO</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
+              quae accusamus aliquam.
+            </p>
+            <a href="javascript:void(0)" class="btn">Read More</a>
+          </div>
+        </div>
+
+        <span class="number-page">3</span>
+
+        <!-- next button -->
+        <span class="nextprev-btn" data-page="turn-2">
+          <i class="bx bx-chevron-right"></i>
+        </span>
+      </div>
+      <!-- page 4 (my skills) -->
+      <div class="page-back">
+        <h1 class="title">My Skills</h1>
+
+        <div class="skills-box">
+          <ng-container *ngFor="let type of skillsGroupedByType | keyvalue">
+            <div class="skills-content">
+              <h3>{{ type.key }}</h3>
+              <div class="content">
+                <ng-container *ngFor="let skill of type.value">
+                  <span
+                    ><i [ngClass]="skill.title_class"></i>
+                    {{ skill.title }}</span
+                  >
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <span class="number-page">4</span>
+
+        <!-- next button -->
+        <span class="nextprev-btn back" data-page="turn-2">
+          <i class="bx bx-chevron-left"></i>
+        </span>
+      </div>
+    </div>
+
+    <!-- page 5 & 6 -->
+    <div class="book-page page-right turn" id="turn-3">
+      <!-- page 5 (latest project or many portfolio) -->
+      <div class="page-front">
+        <h1 class="title">Latest Project</h1>
+
+        <div class="portfolio-box">
+          <div class="img-box">
+            <img [src]="imgUrl[1]" alt="" />
+          </div>
+
+          <div class="info-box">
+            <div class="info-title">
+              <h3>Project Name</h3>
+              <a href="javascript:void(0)"
+                >Live Preview <i class="bx bx-link-external"></i
+              ></a>
+            </div>
+            <p>Tech Used:</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Distinctio, vel ipsum quis possimus quaerat voluptatem temporibus
+              saepe veniam?
+            </p>
+          </div>
+          <div class="btn-box">
+            <a href="javascript:void(0)" class="btn">Source Code</a>
+            <a href="javascript:void(0)" class="btn">More Projects</a>
+          </div>
+        </div>
+
+        <span class="number-page">5</span>
+
+        <!-- next button -->
+        <span class="nextprev-btn" data-page="turn-3">
+          <i class="bx bx-chevron-right"></i>
+        </span>
+      </div>
+
+      <!-- page 6 (contact me!) -->
+      <div class="page-back">
+        <h1 class="title">Contact Me!</h1>
+
+        <div class="contact-box">
+          <form action="">
+            <input type="text" class="field" placeholder="Full Name" required />
+            <input
+              type="email"
+              class="field"
+              placeholder="Email Address"
+              required
+            />
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              class="field"
+              placeholder="Your Message"
+            ></textarea>
+            <input type="submit" value="Send Message" class="btn" />
+          </form>
+        </div>
+
+        <span class="number-page">6</span>
+
+        <!-- next button -->
+        <span class="nextprev-btn back" data-page="turn-3">
+          <i class="bx bx-chevron-left"></i>
+        </span>
+
+        <a href="javascript:void(0)" class="back-profile">
+          <p>Profile</p>
+          <i class="bx bxs-user"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
